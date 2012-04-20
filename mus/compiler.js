@@ -43,7 +43,6 @@ var noteToMidi = function (note) {
 		if(noteArray[0] == midiComp[0])
 		{
 			var noteLength = noteArray.length;
-			console.log(noteArray[noteLength - 1]);
 			midiNote = midiComp[1] + (12 * noteArray[noteLength - 1]);
 			for(var i=1;i<=(noteLength-2);i++)
 			{
