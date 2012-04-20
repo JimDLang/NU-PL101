@@ -14,7 +14,6 @@ var note = function (musexpr, time) {
     if(musexpr.tag == 'note') 
 	{
 		musexpr.start = time;
-        console.log(musexpr.pitch + '--');
 		musexpr.pitch = noteToMidi(musexpr.pitch);
         notes.push(musexpr);
     }
@@ -37,7 +36,6 @@ var note = function (musexpr, time) {
 
 var noteToMidi = function (note) {
 	var midiArray = [['a',21],['b',23],['c',12],['d',14],['e',16],['f',17],['g',19]];
-	console.log(note);
 	var noteArray = note.split("");
 	var midiNote;
 	midiArray.forEach(function (midiComp)
@@ -52,7 +50,6 @@ var noteToMidi = function (note) {
 		}
 	});
 	return midiNote;
-	//return note;
 }
 
 var compile = function (musexpr) {
