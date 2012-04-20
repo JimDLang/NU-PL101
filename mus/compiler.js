@@ -42,11 +42,16 @@ var noteToMidi = function (note) {
 	{
 		if(noteArray[0] == midiComp[0])
 		{
-			midiNote = midiComp[1] + (12 * noteArray[1]);
-			if(noteArray[2] == 'b')
-				midiNote = midiNote - 1;
-			else if(noteArray[2] == '#')
-				midiNote = midiNote + 1;
+			var noteLength = noteArray.length;
+			console.log(noteArray[noteLength - 1]);
+			midiNote = midiComp[1] + (12 * noteArray[noteLength - 1]);
+			for(var i=1;i<=(noteLength-2);i++)
+			{
+				if(noteArray[i] == 'b')
+					midiNote = midiNote - 1;
+				else if(noteArray[i] == '#')
+					midiNote = midiNote + 1;
+			}
 		}
 	});
 	return midiNote;
@@ -60,11 +65,11 @@ var melody_mus =
     { tag: 'seq',
       left: 
        { tag: 'seq',
-         left: { tag: 'note', pitch: 'a4#', dur: 250 },
+         left: { tag: 'note', pitch: 'a##b4', dur: 250 },
          right: { tag: 'rest', dur: 250 } },
       right:
        { tag: 'seq',
-         left: { tag: 'repeat', section: { tag: 'note', pitch: 'b4b', dur: 500 }, count: 3 },
+         left: { tag: 'repeat', section: { tag: 'note', pitch: 'bb4', dur: 500 }, count: 3 },
          right: { tag: 'note', pitch: 'd4', dur: 500 } } };
 
 console.log(melody_mus);
